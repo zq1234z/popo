@@ -1,0 +1,62 @@
+/* Login.css */
+
+.login-container {
+  position: absolute;
+  right: 0; /* 오른쪽으로 정렬합니다. */
+  top: 40.7%; /* 수직 중앙에 위치시킵니다. */
+  transform: translateY(-50%); /* 수직 중앙 정렬을 위한 보정값입니다. */
+  width: 300px; /* 로그인 창의 너비를 지정합니다. */
+  height: 200px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box; /* padding이 너비에 포함되도록 설정합니다. */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.login-input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-error {
+  margin-top: 20px;
+  color: red;
+}
+
+.login-links {
+  display: flex;
+  justify-content: space-between; /* 링크를 분류합니다. */
+  margin-top: 20px;
+}
+
+.login-links a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
