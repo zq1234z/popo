@@ -1,0 +1,69 @@
+
+.find-id-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.find-id-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a5bd9;
+}
+
+.big-box {
+  width: 350px; 
+  height: 250px; 
+  background-color: #dbe5f1;
+  border: 2px solid #3a5bd9;
+  padding: 15px; 
+  margin: 0 auto;
+  text-align: left;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  line-height: 1.8; 
+}
+
+.input-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; 
+}
+
+.input-button-wrapper label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-button-wrapper input,
+.input-button-wrapper button {
+  padding: 8px; 
+}
+
+.input-error-message {
+  margin-top: -10px; 
+  margin-bottom: 10px; 
+}
+
+.big-box p {
+  margin: 0;
+}
+
+.next-button {
+  margin-top: 10px; 
+  font-size: 15px; 
+  background-color: #3a5bd9;
+  color: #fff;
+  border: none;
+  padding: 15px 30px; 
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.next-button:hover {
+  background-color: #1e3250;
+}

@@ -14,6 +14,8 @@ function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
     secondInput: ""
   });
 
+  
+
   const handlePasswordCheck = (event) => {
     const { name, value } = event.target;
     setPasswordCheck({ ...passwordCheck, [name]: value });
@@ -41,7 +43,14 @@ function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
         alert("입력하신 비밀번호가 일치하지 않습니다");
         return;
       }
-  
+    
+      // 특수문자 검증을 추가합니다
+      const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      if (!regex.test(passwordCheck.firstInput)) {
+        alert("비밀번호에는 특수문자가 포함되어야 합니다");
+        return;
+      }
+    
       setIsEditing(false);
     };
   

@@ -2,18 +2,21 @@
 
 .login-container {
   position: absolute;
-  right: 0; /* 오른쪽으로 정렬합니다. */
-  top: 40.7%; /* 수직 중앙에 위치시킵니다. */
-  transform: translateY(-50%); /* 수직 중앙 정렬을 위한 보정값입니다. */
+  left: 50%; /* 수평 중앙에 위치시킵니다. */
+  top: 50%; /* 수직 중앙에 위치시킵니다. */
+  transform: translate(-50%, -50%); /* 수평, 수직 중앙 정렬을 위한 보정값입니다. */
   width: 300px; /* 로그인 창의 너비를 지정합니다. */
-  height: 200px;
+  height: 200px; /* 로그인 창의 높이를 지정합니다. */
   background-color: #f5f5f5;
   padding: 20px;
   box-sizing: border-box; /* padding이 너비에 포함되도록 설정합니다. */
+  z-index: 1; /* 다른 요소 위에 표시되도록 z-index를 설정합니다. */
 }
+
 
 .login-form {
   display: flex;
+  
   flex-direction: column;
   width: 100%;
   border: 1px solid #ddd;

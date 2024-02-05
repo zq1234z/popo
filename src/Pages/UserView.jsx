@@ -1,6 +1,6 @@
 // UserView.js
 import React from 'react';
-import { ProfileImage,ProfileImageContainer } from '../Com/ProfileImage';
+import { ProfileImage,ProfileImageContainer } from '../Proflie/ProfileImage';
 
 function UserView({ userInfo, setIsEditing }) {
   const handleEdit = () => {

@@ -3,6 +3,7 @@ import Header from '../../Com/Header';
 import Login from '../../Com/Login/Login';
 import MainContent from '../../Com/Main Ct/Main Content';
 import Footer from '../../Com/Footer';
+import MainBanner from '../../Com/MainBanner/MainBanner';
 import './Home.css';
 
 const Home = () => {
@@ -12,8 +13,14 @@ const Home = () => {
     <div className="home-container">
       <Header />
       <div className="body-container">
-        <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        <MainContent isLoggedIn={isLoggedIn} />
+        {isLoggedIn ? (
+          <>
+            <MainContent isLoggedIn={isLoggedIn} />
+            <MainBanner /> {/* 배너 컴포넌트를 렌더링합니다. */}
+          </>
+        ) : (
+          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        )}
       </div>
       <Footer />
     </div>
