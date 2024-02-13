@@ -16,7 +16,7 @@ const Home = () => {
         {isLoggedIn ? (
           <>
             <MainContent isLoggedIn={isLoggedIn} />
-            <MainBanner /> {/* 배너 컴포넌트를 렌더링합니다. */}
+            <MainBanner />
           </>
         ) : (
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />

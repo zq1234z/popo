@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { Profile } from '../../Proflie/UserProFileStyle';
 import SignUpModal from '../../Pages/SignUp';
@@ -14,6 +14,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [showFindIdModal, setShowFindIdModal] = useState(false);
   const [showFindPasswordModal, setShowFindPasswordModal] = useState(false);
 
+  useEffect(() => {
+    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(storedIsLoggedIn === 'true');
+  }, []);
+  
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -29,6 +34,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         name: '홍길동',
         profileImage: '/path/to/profile/image',
       });
+      localStorage.setItem('isLoggedIn', true);
     } else {
       setErrorMessage('아이디 또는 비밀번호가 잘못되었습니다.');
     }
@@ -50,7 +56,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     setShowFindPasswordModal(false);
   };
   
-
   const handleCloseFindIdModal = () => {
     setShowFindIdModal(false);
   };
@@ -73,7 +78,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
           <div>환영합니다, {user.name}님!</div>
         </div>
       ) : (
-        (!showSignUpModal && !showFindIdModal && !showFindPasswordModal) && // 모든 모달이 닫혀있을 때만 로그인 페이지를 보여줍니다.
+        (!showSignUpModal && !showFindIdModal && !showFindPasswordModal) &&
         <form onSubmit={handleLogin} className="login-form">
           <input type="text" placeholder="아이디" value={id} onChange={(e) => setId(e.target.value)} className="login-input" />
           <input type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" />

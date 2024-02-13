@@ -1,10 +1,11 @@
-
 import React, { useState, useEffect } from "react";
 import MainPage from "./MainPage";
 import DeleteAccount from "./DeleteAccount";
 import Home from "./Home/Home";
+import Board from "./board/Board";
+import Logout from "./LogOut"; // 로그아웃 컴포넌트 import
 
-function Sidebar() {
+function Sidebar({ setIsLoggedIn }) {
   const [page, setPage] = useState(window.location.hash || "#home");
 
   useEffect(() => {
@@ -33,6 +34,8 @@ function Sidebar() {
         return <MainPage />;
       case "#deleteaccount":
         return <DeleteAccount />;
+      case "#board":
+        return <Board />;
       default:
         return <div>Not Found</div>;
     }
@@ -60,13 +63,14 @@ function Sidebar() {
   const contentStyle = {
     flex: '1'
   };
-
   return (
     <div style={containerStyle}>
       <div style={navStyle}>
         <button style={buttonStyle} onClick={() => window.location.hash = '#home'}>홈</button>
+        <button style={buttonStyle} onClick={() => window.location.hash = '#board'}>게시판</button>
         <button style={buttonStyle} onClick={() => window.location.hash = '#userinfo'}>내 정보</button>
         <button style={buttonStyle} onClick={() => window.location.hash = '#deleteaccount'}>회원 탈퇴</button>
+        <Logout setIsLoggedIn={setIsLoggedIn} /> {/* 로그아웃 컴포넌트 추가 */}
       </div>
       <div style={contentStyle}>
         {renderPage()}
