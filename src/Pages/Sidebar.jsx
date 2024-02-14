@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainPage from "./MainPage";
 import DeleteAccount from "./DeleteAccount";
 import Home from "./Home/Home";
-import Board from "./board/Board";
+import TreeBoard from "./board/TreeBoard";
 import Logout from "./LogOut"; // 로그아웃 컴포넌트 import
 
 function Sidebar({ setIsLoggedIn }) {
@@ -35,7 +35,7 @@ function Sidebar({ setIsLoggedIn }) {
       case "#deleteaccount":
         return <DeleteAccount />;
       case "#board":
-        return <Board />;
+        return <TreeBoard />;
       default:
         return <div>Not Found</div>;
     }

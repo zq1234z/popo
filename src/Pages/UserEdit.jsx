@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { ProfileImage, ProfileImageContainer } from "../Proflie/ProfileImage";
 import {ImageContainer,FileInput,InputField,RadioInput,BirthDateInput,GenderInput} from '../Com/Input';
+import axios from 'axios';
 
 function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
   const handleInputChange = (event) => {
@@ -37,7 +38,7 @@ function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
     };
     
   
-    const handleSave = () => {
+    const handleSave = async () => {
       // 비밀번호 확인 과정을 추가합니다
       if (passwordCheck.firstInput !== passwordCheck.secondInput) {
         alert("입력하신 비밀번호가 일치하지 않습니다");
@@ -49,6 +50,17 @@ function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
       if (!regex.test(passwordCheck.firstInput)) {
         alert("비밀번호에는 특수문자가 포함되어야 합니다");
         return;
+      }
+    
+      // 사용자 정보를 업데이트하는 API 호출을 추가합니다.
+      try {
+        const response = await axios.put('/api/userinfo', {
+          ...userInfo,
+          password: passwordCheck.firstInput, // 비밀번호는 passwordCheck.firstInput에서 가져옵니다
+        });
+        console.log('User info updated:', response.data);
+      } catch (error) {
+        console.error('Failed to update user info:', error);
       }
     
       setIsEditing(false);
@@ -100,7 +112,16 @@ function UserEdit({ userInfo, setUserInfo, setIsEditing }) {
       <label>
         전화번호:
         <InputField type="number" name="phoneNumber" value={userInfo.phoneNumber} onChange={handleInputChange} />
-      </label>
+      </label><br />
+      <label>
+        학과:
+        <select name="department" value={userInfo.department} onChange={handleInputChange}>
+          <option value="">선택하세요</option>
+          <option value="game">게임계열</option>
+          <option value="design">디자인 디지털 계열</option>
+          <option value="it">IT융합계열</option>
+        </select>
+      </label><br /><br />
       <label>
         <RadioInput type="radio" value="졸업생" checked={userInfo.position === '졸업생'} onChange={handleRadioChange} />
         졸업생
