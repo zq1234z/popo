@@ -1,5 +1,3 @@
-// TreeBoard.js 파일
-
 import React, { useState, useEffect } from 'react';
 import GameDepartment from '../../GameDepartment'; // 게임계열 게시판 컴포넌트
 import DesignDepartment from '../../DesignDepartment'; // 디자인 디지털 계열 게시판 컴포넌트
@@ -8,6 +6,7 @@ import axios from 'axios';
 
 const TreeBoard = () => {
   const [userDepartment, setUserDepartment] = useState(null); // 사용자의 학과 정보를 useState로 관리
+  const [selectedDepartment, setSelectedDepartment] = useState(null); // 선택된 학과 정보를 useState로 관리
 
   useEffect(() => {
     // 로그인 후 사용자의 학과 정보를 API를 통해 가져옵니다.
@@ -23,23 +22,31 @@ const TreeBoard = () => {
     fetchUserInfo();
   }, []);
 
+  const handleDepartmentSelect = (department) => {
+    setSelectedDepartment(department);
+  };
+
   const renderDepartmentBoard = () => {
-    if (userDepartment === 'game') {
+    if (selectedDepartment === 'game') {
       return <GameDepartment />;
     }
-    if (userDepartment === 'design') {
+    if (selectedDepartment === 'design') {
       return <DesignDepartment />;
     }
-    if (userDepartment === 'it') {
+    if (selectedDepartment === 'it') {
       return <ITDepartment />;
     }
-    return <div>해당 학과의 게시판만 확인할 수 있습니다.</div>;
   };
 
   return (
     <div>
       <h1>게시판</h1>
-      {renderDepartmentBoard()} {/* 사용자의 학과에 따른 게시판을 보여줍니다. */}
+      <div>
+        <button onClick={() => handleDepartmentSelect('game')}>게임계열</button>
+        <button onClick={() => handleDepartmentSelect('design')}>디자인 디지털 계열</button>
+        <button onClick={() => handleDepartmentSelect('it')}>IT융합계열</button>
+      </div>
+      {selectedDepartment ? renderDepartmentBoard() : <div>학과를 선택해주세요.</div>}
     </div>
   );
 };
